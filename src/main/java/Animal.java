@@ -49,6 +49,8 @@ public class Animal{
                     .addParameter("id", id)
                     .executeAndFetchFirst(Animal.class);
             return animal;
+        } catch (IndexOutOfBoundsException exception){
+            return null;
         }
     }
 
