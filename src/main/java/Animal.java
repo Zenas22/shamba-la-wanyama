@@ -51,7 +51,7 @@ public class Animal{
             return animal;
         }
     }
-//
+
     public void save(){
         try(Connection con = DB.sql2o.open()){
             String sql = "INSERT INTO animals (name, age, health, speciesid) VALUES(:name, :age, :health, :speciesid)";
@@ -64,7 +64,29 @@ public class Animal{
                     .getKey();
         }
     }
-//
+
+    public void update(String name, String age, String health){
+        try(Connection con = DB.sql2o.open()){
+            String sql = "UPDATE animals SET name= :name, age= :age, health= :health WHERE id= :id;";
+            con.createQuery(sql)
+                    .addParameter("id", id)
+                    .addParameter("name", name)
+                    .addParameter("age", age)
+                    .addParameter("health", health)
+                    .executeUpdate();
+        }
+    }
+
+//    public List<Sighting> getSightings(){
+//        try(Connection con = DB.sql2o.open()){
+//            String sql = "SELECT * FROM sightings WHERE animalid= :id;";
+//            List<Sighting> sightings = con.createQuery(sql)
+//                    .addParameter("id",id)
+//                    .executeAndFetch(Sighting.class);
+//            return sightings;
+//        }
+//    }
+
     @Override
     public boolean equals(Object otherAnimal){
         if(!(otherAnimal instanceof Animal)){

@@ -65,4 +65,20 @@ public class AnimalTest{
         twoAnimal.save();
         assertEquals(twoAnimal, Animal.find(twoAnimal.getId()));
     }
+
+    @Test
+    public void update_updatesAnimal(){
+        Animal testAnimal = new Animal("Buffalo", "newborn", "okay",1);
+        testAnimal.save();
+        testAnimal.update("Buffalo", "adult","healthy");
+        assertEquals("adult",testAnimal.getAge());
+        assertEquals("healthy",testAnimal.getHealth());
+        assertEquals("Buffalo",testAnimal.getName());
+    }
+
+    @Test
+    public void find_returnsNull(){
+        assertTrue(Animal.find(999) == null);
+    }
+
 }
