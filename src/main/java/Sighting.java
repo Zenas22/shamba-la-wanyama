@@ -6,10 +6,11 @@ public class Sighting{
     private String ranger;
     private String location;
     private int animalid;
+    private int speciesid;
     private Timestamp timestamp;
     private int id;
 
-    public Sighting(String ranger, String location, int animalid) {
+    public Sighting(String ranger, String location, int animalid,int endangeredid) {
         if(ranger.equals("")){
             throw new IllegalArgumentException("Please enter a valid Ranger");
         }
@@ -19,6 +20,7 @@ public class Sighting{
         this.ranger = ranger;
         this.location = location;
         this.animalid = animalid;
+        this.speciesid = speciesid;
     }
 
     public String getRanger() {
@@ -33,12 +35,24 @@ public class Sighting{
         return animalid;
     }
 
+    public int getSpeciesid(){
+        return speciesid;
+    }
+
     public Timestamp getTimestamp() {
         return timestamp;
     }
 
     public int getId() {
         return id;
+    }
+
+    public static Animal getAnimal(int id){
+        return Animal.find(int id);
+    }
+
+    public static Endangered getSpecies(int id){
+        return Endangered.find(id);
     }
 
     @Override
@@ -51,18 +65,20 @@ public class Sighting{
             return this.getRanger().equals(newSighting.getRanger()) &&
                     this.getLocation().equals(newSighting.getLocation()) &&
                     this.getAnimalid() == newSighting.getAnimalid() &&
+                    this.getSpeciesid() == newSighting.getSpeciesid() &&
                     this.getId() == newSighting.getId();
         }
     }
 
     public void save(){
         try(Connection con = DB.sql2o.open()){
-            String sql = "INSERT INTO sightings(ranger,location,animalid,timestamp) VALUES (:ranger, :location, :animalid, :timestamp);";
+            String sql = "INSERT INTO sightings(ranger,location,animalid,timestamp,endangered) VALUES (:ranger, :location, :animalid, :timestamp, :endangeredid);";
             this.id = (int) con.createQuery(sql, true)
                     .addParameter("ranger", this.ranger)
                     .addParameter("location", this.location)
                     .addParameter("animalid", this.animalid)
                     .addParameter("timestamp", this.timestamp)
+                    .addParameter("speciesid", this.speciesid)
                     .executeUpdate()
                     .getKey();
         }

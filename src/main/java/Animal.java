@@ -8,15 +8,15 @@ public class Animal{
     private String health;
     private int speciesid;
 
-    public int getId() {
+    public int getId(){
         return id;
     }
 
-    public String getName() {
+    public String getName(){
         return name;
     }
 
-    public String getAge() {
+    public String getAge(){
         return age;
     }
 
@@ -24,7 +24,7 @@ public class Animal{
         return health;
     }
 
-    public int getSpeciesid() {
+    public int getSpeciesid(){
         return speciesid;
     }
 
