@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9dbd1e7f-48d0-47d4-a5cf-417db96a74f3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Endangered.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Endangered.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Location.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -49,8 +48,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Sighting.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="34" column="24" lean-forward="true" selection-start-line="34" selection-start-column="24" selection-end-line="34" selection-end-column="24" />
+            <state relative-caret-position="209">
+              <caret line="52" lean-forward="true" selection-start-line="52" selection-end-line="52" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#674#675#0" expanded="true" />
@@ -65,6 +64,8 @@
                 <element signature="e#903#904#0" expanded="true" />
                 <element signature="e#929#930#0" expanded="true" />
                 <element signature="e#954#955#0" expanded="true" />
+                <element signature="e#1155#1156#0" expanded="true" />
+                <element signature="e#1193#1194#0" expanded="true" />
                 <element signature="e#1239#1240#0" expanded="true" />
                 <element signature="e#1271#1272#0" expanded="true" />
               </folding>
@@ -72,7 +73,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Endangered.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1170">
@@ -88,6 +89,15 @@
                 <element signature="e#523#524#0" expanded="true" />
                 <element signature="e#548#549#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Location.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="1" column="4" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -131,8 +141,9 @@
         <option value="$PROJECT_DIR$/src/test/java/AnimalTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/SightingTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/Animal.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Sighting.java" />
         <option value="$PROJECT_DIR$/src/main/java/Endangered.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Sighting.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Location.java" />
       </list>
     </option>
   </component>
@@ -410,8 +421,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Sighting.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="34" column="24" lean-forward="true" selection-start-line="34" selection-start-column="24" selection-end-line="34" selection-end-column="24" />
+        <state relative-caret-position="209">
+          <caret line="52" lean-forward="true" selection-start-line="52" selection-end-line="52" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#674#675#0" expanded="true" />
@@ -426,6 +437,8 @@
             <element signature="e#903#904#0" expanded="true" />
             <element signature="e#929#930#0" expanded="true" />
             <element signature="e#954#955#0" expanded="true" />
+            <element signature="e#1155#1156#0" expanded="true" />
+            <element signature="e#1193#1194#0" expanded="true" />
             <element signature="e#1239#1240#0" expanded="true" />
             <element signature="e#1271#1272#0" expanded="true" />
           </folding>
@@ -447,6 +460,13 @@
             <element signature="e#523#524#0" expanded="true" />
             <element signature="e#548#549#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Location.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="4" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="4" />
         </state>
       </provider>
     </entry>
