@@ -2,7 +2,6 @@ import org.junit.*;
 import static org.junit.Assert.*;
 import org.sql2o.*;
 
-import javax.lang.model.element.AnnotationMirror;
 
 public class AnimalTest{
 

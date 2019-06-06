@@ -4,21 +4,18 @@ import java.util.*;
 
 public class Sighting{
     private String ranger;
-    private String location;
+    private int locationid;
     private int animalid;
     private int endangeredid;
     private Timestamp timestamp;
     private int id;
 
-    public Sighting(String ranger, String location, int animalid,int endangeredid) {
+    public Sighting(String ranger, int locationid, int animalid,int endangeredid) {
         if(ranger.equals("")){
             throw new IllegalArgumentException("Please enter a valid Ranger");
         }
-        if(location.equals("")){
-            throw new IllegalArgumentException("Please enter a valid location");
-        }
         this.ranger = ranger;
-        this.location = location;
+        this.locationid = locationid;
         this.animalid = animalid;
         this.endangeredid = endangeredid;
     }
@@ -27,8 +24,8 @@ public class Sighting{
         return ranger;
     }
 
-    public String getLocation() {
-        return location;
+    public int getLocationid() {
+        return locationid;
     }
 
     public int getAnimalid() {
@@ -55,6 +52,10 @@ public class Sighting{
         return Endangered.find(id);
     }
 
+    public static Location getLocation(int id){
+        return Location.find(id);
+    }
+
     @Override
     public boolean equals(Object otherSighting){
         if(!(otherSighting instanceof Sighting)){
@@ -63,7 +64,7 @@ public class Sighting{
         else {
             Sighting newSighting = (Sighting) otherSighting;
             return this.getRanger().equals(newSighting.getRanger()) &&
-                    this.getLocation().equals(newSighting.getLocation()) &&
+                    this.getLocationid() == newSighting.getLocationid() &&
                     this.getAnimalid() == newSighting.getAnimalid() &&
                     this.getSpeciesid() == newSighting.getSpeciesid() &&
                     this.getId() == newSighting.getId();
@@ -72,10 +73,10 @@ public class Sighting{
 
     public void save(){
         try(Connection con = DB.sql2o.open()){
-            String sql = "INSERT INTO sightings(ranger,location,animalid,timestamp,endangered) VALUES (:ranger, :location, :animalid, :timestamp, :endangeredid);";
+            String sql = "INSERT INTO sightings(ranger,locationid,animalid,timestamp,endangered) VALUES (:ranger, :locationid, :animalid, :timestamp, :endangeredid);";
             this.id = (int) con.createQuery(sql, true)
                     .addParameter("ranger", this.ranger)
-                    .addParameter("location", this.location)
+                    .addParameter("locationid", this.locationid)
                     .addParameter("animalid", this.animalid)
                     .addParameter("timestamp", this.timestamp)
                     .addParameter("endangeredid", this.endangeredid)
