@@ -1,0 +1,45 @@
+<section class="snap-scroll ful-cover section-1 white-background">
+<div class="container has-border">
+
+ <h2 class="text-center">Tracker</h2>
+ <hr>
+#foreach($sighting in $sightings)
+    <br>
+    <div class="card text-center">
+      <div class="card-header">
+
+       $sighting.getAnimal( $sighting.getAnimalid() ).getName()
+
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"> $sighting.getLocation( $sighting.getLocationid() ).getName()</h5>
+        <p class="card-text">Sighted by:  $sighting.getRanger( $sighting.getRangerid() ).getName()</p>
+
+       #if( $sighting.getSpecies( $sighting.getSpeciesid() ).isEndangered() == false )
+
+        <span class="badge badge-pill badge-default">Not Endangered</span>
+        #else
+        <span class="badge badge-pill badge-danger">Endangered</span>
+        #end
+      </div>
+      <div class="card-footer text-muted">
+        $sighting.getTimestamp()
+      </div>
+    </div>
+</div>
+#end
+
+
+
+
+
+</div>
+
+<br>
+<hr>
+
+ <div class = "col-md-2"></div>
+
+</div>
+</div>
+</section>

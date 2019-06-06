@@ -68,12 +68,7 @@
                     <archive>
                         <!-- Change this to YOUR main class name if different. Usually, it will be App. -->
                         <manifest>
-                            <mainClass><dependency>
-                                <groupId>junit</groupId>
-                                <artifactId>junit</artifactId>
-                                <version>4.12</version>
-                                <scope>test</scope>
-                            </dependency></mainClass>
+                            <mainClass>App</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
@@ -85,7 +80,7 @@
                 <configuration>
                     <jdkVersion>1.8</jdkVersion>
                     <!-- Change this to YOUR application name! -->
-                    <appName>gon</appName>
+                    <appName>shamba-la-wanyama</appName>
                     <processTypes>
                         <web>java -jar target/my-app-1.0-jar-with-dependencies.jar</web>
                     </processTypes>

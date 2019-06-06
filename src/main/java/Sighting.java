@@ -6,15 +6,15 @@ public class Sighting{
     private int rangerid;
     private int locationid;
     private int animalid;
-    private int endangeredid;
+    private int speciesid;
     private Timestamp timestamp;
     private int id;
 
-    public Sighting(int rangerid, int locationid, int animalid,int endangeredid) {
+    public Sighting(int rangerid, int locationid, int animalid,int speciesid) {
         this.rangerid = rangerid;
         this.locationid = locationid;
         this.animalid = animalid;
-        this.endangeredid = endangeredid;
+        this.speciesid = speciesid;
     }
 
     public int getRangerid() {
@@ -30,7 +30,7 @@ public class Sighting{
     }
 
     public int getSpeciesid(){
-        return endangeredid;
+        return speciesid;
     }
 
     public Timestamp getTimestamp() {
@@ -74,13 +74,13 @@ public class Sighting{
 
     public void save(){
         try(Connection con = DB.sql2o.open()){
-            String sql = "INSERT INTO sightings(rangerid,locationid,animalid,timestamp,endangered) VALUES (:rangerid, :locationid, :animalid, :timestamp, :endangeredid);";
+            String sql = "INSERT INTO sightings(rangerid,locationid,animalid,timestamp,speciesid) VALUES (:rangerid, :locationid, :animalid, :timestamp, :speciesid);";
             this.id = (int) con.createQuery(sql, true)
                     .addParameter("rangerid", this.rangerid)
                     .addParameter("locationid", this.locationid)
                     .addParameter("animalid", this.animalid)
                     .addParameter("timestamp", this.timestamp)
-                    .addParameter("endangeredid", this.endangeredid)
+                    .addParameter("speciesid", this.speciesid)
                     .executeUpdate()
                     .getKey();
         }

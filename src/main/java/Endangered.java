@@ -57,14 +57,14 @@ public class Endangered{
 
     public static List<Endangered> all(){
         try (Connection con = DB.sql2o.open()){
-            String sql = "SELECT * FROM endangered";
+            String sql = "SELECT * FROM species";
             return con.createQuery(sql).executeAndFetch(Endangered.class);
         }
     }
 
     public static Endangered find(int id){
         try (Connection con = DB.sql2o.open()){
-            String sql = "SELECT * FROM endangered WHERE id =:id";
+            String sql = "SELECT * FROM species WHERE id =:id";
             Endangered endangered  = con.createQuery(sql)
                     .addParameter("id", id)
                     .executeAndFetchFirst(Endangered.class);
@@ -74,7 +74,7 @@ public class Endangered{
 
     public void update(String name, int population, boolean endangered){
         try(Connection con = DB.sql2o.open()){
-            String sql = "UPDATE endangered SET name = :name, population = :population, endangered = :endangered WHERE id = :id";
+            String sql = "UPDATE species SET name = :name, population = :population, endangered = :endangered WHERE id = :id";
             con.createQuery(sql)
                     .addParameter("name", name)
                     .addParameter("population", population)

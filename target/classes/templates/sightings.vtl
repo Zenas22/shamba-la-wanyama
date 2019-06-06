@@ -1,0 +1,60 @@
+<section class="snap-scroll ful-cover section-1 white-background">
+<div class="container has-border">
+<div class = "row">
+
+    <div class = "col-md-2"></div>
+     <div class = "col-md-8">
+
+     <form class="border border-light p-5" action="/sighted" method="post" >
+
+               <p class="h4 mb-4 text-center">Add A Sighting</p>
+
+
+
+
+               <select class="custom-select" name = "animal_id" id = "animal_id">
+                 <option disabled selected>Select An Animal</option>
+                 #foreach($animal in $animals)
+                    <option value="$animal.getId()">$animal.getName()</option>
+                #end
+               </select>
+
+                  <br><br>
+
+               <select class="custom-select" name = "location_id" id = "location_id" >
+                <option disabled selected>Select The Sighting Location</option>
+                 #foreach($location in $locations)
+                     <option value="$location.getId()">$location.getName()</option>
+                   #end
+              </select>
+
+                 <br><br>
+
+              <select class="custom-select" name= "ranger_id" id= "ranger_id" >
+               <option disabled selected>Select The Ranger</option>
+              #foreach($ranger in $rangers)
+                  <option value="$ranger.getId()">$ranger.getName()</option>
+               #end
+             </select>
+
+            <br><br>
+             <select class="custom-select" name ="species_id" id="species_id" >
+              <option disabled selected>Select The Animal Species</option>
+              #foreach($species in $species)
+                     <option value="$species.getId()">$species.getName()</option>
+              #end
+            </select>
+
+
+   <br><br>
+
+               <button class="btn  btn-block success-color" type="submit" name ="action" >Add</button>
+           </form>
+
+
+     </div>
+ <div class = "col-md-2"></div>
+
+</div>
+</div>
+</section>

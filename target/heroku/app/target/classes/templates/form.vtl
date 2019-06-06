@@ -1,0 +1,124 @@
+<div class="snap-scroll full-cover">
+<br>
+<br>
+<br>
+<br>
+<br>
+</div>
+<section class="snap-scroll full-cover section-2 white-background">
+  <div class="container has-border">
+    <div class="row">
+
+    <h4>Species</h4>
+
+         <form class="border border-light p-5" action="/species" method="post" >
+
+             <p class="h4 mb-4 text-center">Add A Species</p>
+
+
+             <input type="text" id="name" name="name" class="form-control mb-4" placeholder="Name" required>
+
+
+             <input type="number" id="population" name="population" class="form-control mb-4" placeholder="Population" required>
+
+                <select class="browser-default custom-select" name="endangered", id="endangered" required>
+                   <option disabled selected>The species is endangered:</option>
+                   <option value="true">True</option>
+                   <option value="false">False</option>
+
+                 </select>
+
+<br><br>
+
+             <button class="btn success-color btn-block" type="submit"  name="action" >Add</button>
+         </form>
+
+</section>
+<section class="snap-scroll full-cover section-3 white-background">
+<div class="container has-border valign-wrapper">
+<div class="row">
+      <h4>Ranger Form</h4>
+<form class="border border-light p-5" action="/ranger" method="post" >
+
+    <p class="h4 mb-4 text-center">Add A Ranger</p>
+
+
+    <input type="text" id="name" name = "name" class="form-control mb-4" placeholder="Name" required>
+
+
+    <input type="number" id="badge" name = "badge" class="form-control mb-4" placeholder="Badge Number" required>
+
+    <button class="btn success-color btn-block" type="submit" name = "action" >Add</button>
+</form>
+</div>
+</div>
+</section>
+
+<section class="snap-scroll ful-cover section-4 white-background">
+<div class="container has-border valign-wrapper">
+<div class="row">
+
+      <h4 id="list-item-3">Animal Form</h4>
+
+      <form class="border border-light p-5"action="/animal" method="post" >
+
+          <p class="h4 mb-4 text-center">Add An Animal</p>
+
+
+          <input type="text" id="name" name = "name" class="form-control mb-4" placeholder="Name" required>
+
+          <select class="custom-select" name = "speciesid" id = "speciesid" required>
+            <option disabled selected>Select A Species</option>
+            #foreach($endangered in $endangereds)
+                <option value="$endangered.getId()">$endangered.getName()</option>
+            #end
+          </select>
+<br><br>
+            <select class="custom-select" name = "age" id = "age" required>
+              <option disabled selected>Select Animal Age</option>
+              <option value="newborn">Newborn</option>
+              <option value="young">Young</option>
+              <option value="adult">Adult</option>
+            </select>
+<br><br>
+             <select class="custom-select" name = "health", id= "health" required>
+              <option disabled selected>Select Animal Health</option>
+              <option value="healthy">Healthy</option>
+              <option value="okay">Okay</option>
+              <option value="ill">Ill</option>
+            </select>
+
+<br><br>
+
+          <button class="btn success-color btn-block" type="submit" name = "action" >Add</button>
+      </form>
+</div>
+</div>
+</section>
+<section class="snap-scroll full-cover section-5 white-background">
+<div class="container has-border valign-wrapper">
+<div class="row">
+
+  <h4>Location Form</h4>
+
+         <form class="border border-light p-5" action="/location" method="post" >
+
+             <p class="h4 mb-4 text-center">Add A Location</p>
+
+
+             <input type="text" id="name" name="name" class="form-control mb-4" placeholder="Name" required>
+
+
+
+
+
+             <button class="btn success-color btn-block" type="submit"  name="action" >Add</button>
+         </form>
+
+
+
+
+
+    </div>
+  </div>
+</section>
