@@ -3,25 +3,22 @@ import java.sql.Timestamp;
 import java.util.*;
 
 public class Sighting{
-    private String ranger;
+    private int rangerid;
     private int locationid;
     private int animalid;
     private int endangeredid;
     private Timestamp timestamp;
     private int id;
 
-    public Sighting(String ranger, int locationid, int animalid,int endangeredid) {
-        if(ranger.equals("")){
-            throw new IllegalArgumentException("Please enter a valid Ranger");
-        }
-        this.ranger = ranger;
+    public Sighting(int rangerid, int locationid, int animalid,int endangeredid) {
+        this.rangerid = rangerid;
         this.locationid = locationid;
         this.animalid = animalid;
         this.endangeredid = endangeredid;
     }
 
-    public String getRanger() {
-        return ranger;
+    public int getRangerid() {
+        return rangerid;
     }
 
     public int getLocationid() {
@@ -56,6 +53,10 @@ public class Sighting{
         return Location.find(id);
     }
 
+    public static Ranger getRanger(int id){
+        return Ranger.find(id);
+    }
+
     @Override
     public boolean equals(Object otherSighting){
         if(!(otherSighting instanceof Sighting)){
@@ -63,7 +64,7 @@ public class Sighting{
         }
         else {
             Sighting newSighting = (Sighting) otherSighting;
-            return this.getRanger().equals(newSighting.getRanger()) &&
+            return this.getRangerid() == newSighting.getRangerid() &&
                     this.getLocationid() == newSighting.getLocationid() &&
                     this.getAnimalid() == newSighting.getAnimalid() &&
                     this.getSpeciesid() == newSighting.getSpeciesid() &&
@@ -73,9 +74,9 @@ public class Sighting{
 
     public void save(){
         try(Connection con = DB.sql2o.open()){
-            String sql = "INSERT INTO sightings(ranger,locationid,animalid,timestamp,endangered) VALUES (:ranger, :locationid, :animalid, :timestamp, :endangeredid);";
+            String sql = "INSERT INTO sightings(rangerid,locationid,animalid,timestamp,endangered) VALUES (:rangerid, :locationid, :animalid, :timestamp, :endangeredid);";
             this.id = (int) con.createQuery(sql, true)
-                    .addParameter("ranger", this.ranger)
+                    .addParameter("rangerid", this.rangerid)
                     .addParameter("locationid", this.locationid)
                     .addParameter("animalid", this.animalid)
                     .addParameter("timestamp", this.timestamp)
