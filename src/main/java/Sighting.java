@@ -6,7 +6,7 @@ public class Sighting{
     private String ranger;
     private String location;
     private int animalid;
-    private int speciesid;
+    private int endangeredid;
     private Timestamp timestamp;
     private int id;
 
@@ -20,7 +20,7 @@ public class Sighting{
         this.ranger = ranger;
         this.location = location;
         this.animalid = animalid;
-        this.speciesid = speciesid;
+        this.endangeredid = endangeredid;
     }
 
     public String getRanger() {
@@ -36,7 +36,7 @@ public class Sighting{
     }
 
     public int getSpeciesid(){
-        return speciesid;
+        return endangeredid;
     }
 
     public Timestamp getTimestamp() {
@@ -48,7 +48,7 @@ public class Sighting{
     }
 
     public static Animal getAnimal(int id){
-        return Animal.find(int id);
+        return Animal.find(id);
     }
 
     public static Endangered getSpecies(int id){
@@ -78,7 +78,7 @@ public class Sighting{
                     .addParameter("location", this.location)
                     .addParameter("animalid", this.animalid)
                     .addParameter("timestamp", this.timestamp)
-                    .addParameter("speciesid", this.speciesid)
+                    .addParameter("endangeredid", this.endangeredid)
                     .executeUpdate()
                     .getKey();
         }
