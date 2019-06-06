@@ -34,6 +34,7 @@ public class App{
         get("/form", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
             model.put("endangered", Endangered.all());
+            model.put("animals", Animal.all());
             model.put("template", "templates/form.vtl");
             return new ModelAndView(model,layout);
         }, new VelocityTemplateEngine());
@@ -56,7 +57,7 @@ public class App{
             Endangered danger = new Endangered(name,population,endangered);
             danger.save();
             model.put("endangered", Endangered.all());
-            String url = String.format("/views");
+            String url = String.format("/track");
             response.redirect(url);
             return new ModelAndView(model,layout);
         }, new VelocityTemplateEngine());
@@ -67,7 +68,7 @@ public class App{
             int badge = Integer.parseInt(request.queryParams("badge"));
             Ranger ranger = new Ranger(name, badge);
             ranger.save();
-            String url = String.format("/views");
+            String url = String.format("/track");
             response.redirect(url);
             return new ModelAndView(model,layout);
         }, new VelocityTemplateEngine());
@@ -80,7 +81,7 @@ public class App{
             String health = request.queryParams("health");
             Animal animal = new Animal(name, age, health, species_id);
             animal.save();
-            String url = String.format("/views");
+            String url = String.format("/track");
             response.redirect(url);
             return new ModelAndView(model,layout);
         }, new VelocityTemplateEngine());
@@ -93,7 +94,7 @@ public class App{
             int ranger = Integer.parseInt(request.queryParams("rangerid"));
             Sighting sighting = new Sighting(animal,location_id,ranger,species );
             sighting.save();
-            String url = String.format("/views");
+            String url = String.format("/track");
             response.redirect(url);
             return new ModelAndView(model,layout);
         }, new VelocityTemplateEngine());
@@ -103,19 +104,19 @@ public class App{
             String name = request.queryParams("name");
             Location location = new Location(name);
             location.save();
-            String url = String.format("/views");
+            String url = String.format("/track");
             response.redirect(url);
             return new ModelAndView(model,layout);
         }, new VelocityTemplateEngine());
 
-        get("/views", (request, response) -> {
+        get("/track", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
             model.put("sightings", Sighting.all());
             model.put("animals", Animal.all());
             model.put("rangers", Ranger.all());
             model.put("endangered", Endangered.all());
             model.put("locations", Location.all());
-            model.put("template", "templates/views.vtl");
+            model.put("template", "templates/track.vtl");
             return new ModelAndView(model,layout);
         }, new VelocityTemplateEngine());
     }

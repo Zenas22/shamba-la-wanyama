@@ -14,7 +14,7 @@
   <div class="container has-border">
     <div class="row">
 
-    <h4 id="list-item-1">Endangered species</h4>
+    <h4 id="list-item-1">Species</h4>
 
          <form class="border border-light p-5" action="/species" method="post" >
 
@@ -72,10 +72,10 @@
 
           <input type="text" id="name" name = "name" class="form-control mb-4" placeholder="Name">
 
-          <select class="custom-select" name = "species_id" id = "species_id" >
+          <select class="custom-select" name = "speciesid" id = "speciesid" >
             <option disabled selected>Select A Species</option>
-            #foreach($species in $species)
-                <option value="$species.getId()">$species.getName()</option>
+            #foreach($endangered in $endangereds)
+                <option value="$endangered.getId()">$endangered.getName()</option>
             #end
           </select>
 <br><br>

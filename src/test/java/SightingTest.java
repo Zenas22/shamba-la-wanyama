@@ -11,7 +11,7 @@ public class SightingTest{
     public void sighting_instantiates(){
         Animal testAnimal = new Animal("Buffalo", "adult","healthy", 1);
         testAnimal.save();
-        Sighting testSighting = new Sighting("Zeus","Zone A", testAnimal.getId());
+        Sighting testSighting = new Sighting(1,2, 1,1);
         assertEquals(true, testSighting instanceof Sighting);
     }
 
@@ -19,7 +19,7 @@ public class SightingTest{
     public void save_true(){
         Animal testAnimal = new Animal("Buffalo", "newborn", "okay",1);
         testAnimal.save();
-        Sighting testSighting = new Sighting("Zeus","Zone A", testAnimal.getId());
+        Sighting testSighting = new Sighting(1,2, 1,1);
         testSighting.save();
         assertTrue(Sighting.all().get(0).equals(testSighting));
     }
@@ -30,9 +30,9 @@ public class SightingTest{
         oneAnimal.save();
         Animal twoAnimal = new Animal("Giraffe", "adult","okay",2);
         twoAnimal.save();
-        Sighting oneSighting = new Sighting("Zeus","Zone A", oneAnimal.getId());
+        Sighting oneSighting = new Sighting(1,2, 1,1);
         oneSighting.save();
-        Sighting twoSighting = new Sighting("Zeus","Zone B", twoAnimal.getId());
+        Sighting twoSighting = new Sighting(1,2, 1,1);
         twoSighting.save();
         assertTrue(Sighting.all().get(0).equals(oneSighting));
         assertTrue(Sighting.all().get(1).equals(twoSighting));
@@ -44,9 +44,9 @@ public class SightingTest{
         oneAnimal.save();
         Animal twoAnimal = new Animal("Giraffe", "adult","okay",2);
         twoAnimal.save();
-        Sighting oneSighting = new Sighting("Zeus","Zone A", oneAnimal.getId());
+        Sighting oneSighting = new Sighting(1,2, 1,1);
         oneSighting.save();
-        Sighting twoSighting = new Sighting("Zeus","Zone B", twoAnimal.getId());
+        Sighting twoSighting = new Sighting(1,2, 2,1);
         twoSighting.save();
         assertEquals(Sighting.find(twoSighting.getId()), twoSighting);
     }

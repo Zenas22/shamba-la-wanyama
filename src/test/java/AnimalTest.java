@@ -1,6 +1,5 @@
 import org.junit.*;
 import static org.junit.Assert.*;
-import org.sql2o.*;
 
 
 public class AnimalTest{
@@ -73,11 +72,6 @@ public class AnimalTest{
         assertEquals("adult",testAnimal.getAge());
         assertEquals("healthy",testAnimal.getHealth());
         assertEquals("Buffalo",testAnimal.getName());
-    }
-
-    @Test
-    public void find_returnsNull(){
-        assertTrue(Animal.find(999) == null);
     }
 
 }
