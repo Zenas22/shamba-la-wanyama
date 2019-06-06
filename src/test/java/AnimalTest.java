@@ -68,10 +68,8 @@ public class AnimalTest{
     public void update_updatesAnimal(){
         Animal testAnimal = new Animal("Buffalo", "newborn", "okay",1);
         testAnimal.save();
-        testAnimal.update("Buffalo", "adult","healthy");
-        assertEquals("adult",testAnimal.getAge());
-        assertEquals("healthy",testAnimal.getHealth());
-        assertEquals("Buffalo",testAnimal.getName());
+        testAnimal.update( "adult","healthy");
+        assertEquals("adult", Animal.find(testAnimal.getId()).getAge());
     }
 
 }

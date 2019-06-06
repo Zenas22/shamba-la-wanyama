@@ -45,10 +45,10 @@ public class Animal{
     public static Animal find(int id){
         try(Connection con = DB.sql2o.open()){
             String sql ="SELECT * FROM animals where id=:id";
-            Animal animal = con.createQuery(sql)
+            Animal newAnimal = con.createQuery(sql)
                     .addParameter("id", id)
                     .executeAndFetchFirst(Animal.class);
-            return animal;
+            return newAnimal;
         } catch (IndexOutOfBoundsException exception){
             return null;
         }
@@ -67,12 +67,11 @@ public class Animal{
         }
     }
 
-    public void update(String name, String age, String health){
+    public void update(String age, String health){
         try(Connection con = DB.sql2o.open()){
-            String sql = "UPDATE animals SET name= :name, age= :age, health= :health WHERE id= :id;";
+            String sql = "UPDATE animals SET age= :age, health= :health WHERE id= :id;";
             con.createQuery(sql)
                     .addParameter("id", id)
-                    .addParameter("name", name)
                     .addParameter("age", age)
                     .addParameter("health", health)
                     .executeUpdate();

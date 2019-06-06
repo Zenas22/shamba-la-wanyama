@@ -1,25 +1,22 @@
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-
-
 import spark.ModelAndView;
 import static spark.Spark.*;
 
 public class App{
-    static int getHerokuAssignedPort() {
-        ProcessBuilder processBuilder = new ProcessBuilder();
-        if (processBuilder.environment().get("PORT") != null) {
-            return Integer.parseInt(processBuilder.environment().get("PORT"));
-        }
-        return 4567; //return default port if heroku-port isn't set (i.e. on localhost)
-    }
+//    static int getHerokuAssignedPort() {
+//        ProcessBuilder processBuilder = new ProcessBuilder();
+//        if (processBuilder.environment().get("PORT") != null) {
+//            return Integer.parseInt(processBuilder.environment().get("PORT"));
+//        }
+//        return 4567; //return default port if heroku-port isn't set (i.e. on localhost)
+//    }
 
 
 
     public static void main(String[] args){
 
-        port(getHerokuAssignedPort());
+//        port(getHerokuAssignedPort());
 
 
         staticFileLocation("/public");
@@ -33,7 +30,6 @@ public class App{
 
         get("/form", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
-            model.put("endangered", Endangered.all());
             model.put("animals", Animal.all());
             model.put("template", "templates/form.vtl");
             return new ModelAndView(model,layout);
@@ -54,11 +50,10 @@ public class App{
             String name = request.queryParams("name");
             int population =Integer.parseInt(request.queryParams("population"));
             boolean endangered =Boolean.parseBoolean(request.queryParams("endangered")) ;
-            Endangered danger = new Endangered(name,population,endangered);
-            danger.save();
+            Endangered species = new Endangered(name,population,endangered);
+            species.save();
             model.put("endangered", Endangered.all());
-            String url = String.format("/track");
-            response.redirect(url);
+            model.put("template", "templates/track.vtl");
             return new ModelAndView(model,layout);
         }, new VelocityTemplateEngine());
 
@@ -68,8 +63,7 @@ public class App{
             int badge = Integer.parseInt(request.queryParams("badge"));
             Ranger ranger = new Ranger(name, badge);
             ranger.save();
-            String url = String.format("/track");
-            response.redirect(url);
+            model.put("template", "templates/track.vtl");
             return new ModelAndView(model,layout);
         }, new VelocityTemplateEngine());
 
@@ -81,8 +75,7 @@ public class App{
             String health = request.queryParams("health");
             Animal animal = new Animal(name, age, health, species_id);
             animal.save();
-            String url = String.format("/track");
-            response.redirect(url);
+            model.put("template", "templates/track.vtl");
             return new ModelAndView(model,layout);
         }, new VelocityTemplateEngine());
 
@@ -94,8 +87,7 @@ public class App{
             int ranger = Integer.parseInt(request.queryParams("rangerid"));
             Sighting sighting = new Sighting(animal,location_id,ranger,species );
             sighting.save();
-            String url = String.format("/track");
-            response.redirect(url);
+            model.put("template", "templates/track.vtl");
             return new ModelAndView(model,layout);
         }, new VelocityTemplateEngine());
 
@@ -104,8 +96,7 @@ public class App{
             String name = request.queryParams("name");
             Location location = new Location(name);
             location.save();
-            String url = String.format("/track");
-            response.redirect(url);
+            model.put("template", "templates/track.vtl");
             return new ModelAndView(model,layout);
         }, new VelocityTemplateEngine());
 
