@@ -44,5 +44,4 @@ git clone https://github.com/Zenas22/shmba-la-wanyama.git
 
 ##In PSQL in the terminal:
 CREATE DATABASE wildlife_tracker;
-
-/c wildlife_tracker;
+$ psql name_of_database < schema.sql
